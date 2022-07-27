@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect } from "react";
 import { useProducts } from "service-hooks";
 
@@ -14,12 +15,13 @@ const Products = () => {
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {data.map(({ name, image, currencyCode, amount }) => (
-            <div className="group relative">
+          {data.map(({ name, image, currencyCode, amount }, idx) => (
+            <div key={`item-${idx}`} className="group relative">
               <div className="w-90 h-90 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                <img
+                <Image
                   src={image}
                   className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                  alt={name}
                 />
               </div>
               <div className="mt-4 flex justify-between">
