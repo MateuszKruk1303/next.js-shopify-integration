@@ -1,11 +1,7 @@
-import Image from "next/image";
-import { useEffect } from "react";
 import { useProducts } from "service-hooks";
 
 const Products = () => {
   const { data, loading } = useProducts();
-
-  console.log(loading);
 
   return loading ? (
     <div className="flex justify-center items-center">
@@ -18,7 +14,7 @@ const Products = () => {
           {data.map(({ name, image, currencyCode, amount }, idx) => (
             <div key={`item-${idx}`} className="group relative">
               <div className="w-90 h-90 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                <Image
+                <img
                   src={image}
                   className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                   alt={name}
